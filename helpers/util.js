@@ -6,6 +6,10 @@ function reverse(str) {
     return out;
 }
 
+module.exports = {
+    reverse: reverse
+}
+
 exports.reverseDust = function(chunk, context, bodies, params) {
     var string = params.str;
     return chunk.write(reverse(string));

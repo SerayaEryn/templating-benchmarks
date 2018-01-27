@@ -1,0 +1,34 @@
+div.search-results-container
+  div#searching.searching
+    div.wait-indicator-icon
+      | Searching...
+    div#resultsContainer
+      div.hd
+        span.count
+          span#count #{totalCount}
+          |  results
+        div.view-modifiers
+          div.view-select
+            | View:
+            div#viewIconGallery.view-icon.view-icon-selected
+              i.icon-th
+            div#viewIconList.view-icon
+              i.icon-th-list
+      div#resultsTarget
+        div.search-results(class='view-' + view)
+          each searchRecord in searchRecords
+            div.search-item
+              div.search-item-container.drop-shadow
+                div.img-container
+                  img(src=searchRecord.imgUrl)
+                h4.title
+                  a(href=searchRecord.viewItemUrl)
+                    !=searchRecord.title
+                | #{searchRecord.description}
+                if (searchRecord.featured)
+                  | Featured!
+                if(searchRecord.sizes && searchRecord.sizes.length)
+                  | Sizes available:
+                  ul
+                    each size in searchRecord.sizes
+                      li!=size

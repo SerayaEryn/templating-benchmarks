@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Friends
+
+  body
+    div.friends
+      each friend in friends
+        div.friend
+          ul
+            li Name: #{getFullNameRaptor(friend)} 
+            li Balance: #{friend.balance}
+            li Age: #{friend.age}
+            li Address: #{friend.address}
+            li
+              | Image: 
+              img(src=friend.picture)
+            li Company: #{friend.company}
+            li
+              | Email: 
+              a(href="mailto:#{friend.email}")=friend.email
+            li About: #{friend.about}
+            li
+              if (friend.tags.length)
+                | Tags: 
+                ul
+                  each tag in friend.tags
+                    li=tag
+            if (friend.friends.length)
+              li
+                | Friends:
+                ul
+                  each friend1 in friend.friends
+                    li 
+                      | #{friend1.name} (#{friend1.id})

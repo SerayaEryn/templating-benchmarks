@@ -1,0 +1,12 @@
+html
+  head
+    title
+      =title
+  body
+    p=text
+    each project in projects
+      a(href=project.url)
+        =project.name
+      p=description
+    if (!projects.length)
+      | No projects
